@@ -1,0 +1,1 @@
+# qubership-inventory-tool-cli
