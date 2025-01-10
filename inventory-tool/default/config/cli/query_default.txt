@@ -1,0 +1,26 @@
+# start
+
+allVertexTypes()
+Select Vertex Id grouped by Type
+.V().group().by("type").by("id");
+
+allEdgeTypes()
+Fetch deduplicated Edge Types list
+.E().type().dedup();
+
+domainsGroupedByTechnology()
+Group Domains by used technologies (type, id)
+.V("Infrastructure").as("I").out().values("type", "id").as("T")
+.both().where(neq("I")).hasKey("details").as("D")
+.select("T", "D")
+.values("infra:/T", "domain:/D/details/domain")
+.group().by("infra").by("domain");
+
+mandatoryRelations()
+Fetch mandatory relations between Microservices
+.V().as("FROM").outE("mandatory").inV().as("TO")
+.select("FROM", "TO")
+.values("from:/FROM/id", "to:/TO/id")
+.dedup().group().by("from").by("to");
+
+# end

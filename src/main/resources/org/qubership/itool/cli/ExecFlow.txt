@@ -1,0 +1,62 @@
+# This is comment
+-- This is comment
+// This is comment, too. Empty lines are ignored.
+
+-- Prepare graph
+inventoryToolInit    # Trailing comments are supported, too
+initializeDomains
+
+-- Fetch repositories
+repositoriesSetPath
+repositoriesPrepareSuperRepository
+repositoriesSetRevision
+extractNestedComponents
+
+-- Parse files fetched from repositories
+parseInventoryFile
+
+parseComponentConfFiles
+parseGoModFile
+parsePomFile
+parseDockerFile
+parseRouteAnnotation
+parseSearchPasswordInYaml
+parseErrorCodes
+parseSqlFiles
+
+enrichDocumentationLinks
+
+fillMandatoryValues
+
+-- Add additional vertices and edges
+addSpecificationVertex
+mavenDependencyDumpExtract
+mavenDependencyDumpParse
+setEdgesBetweenComponents
+setTransitiveEdgesBetweenComponents
+
+-- Exports
+excelExport
+exportCSVJavaDependencies
+
+-- confluence pages generation
+confluenceGenerateComponentPages
+confluenceGenerateDomainPages
+confluenceGenerateDepartmentMainPage
+
+-- Reports pages generation
+confluenceGenerateReportErrors
+
+-- Summary pages generation
+confluenceSummaryLibraries
+confluenceSummaryMicroservices
+confluenceSummaryTechStacksPerDomain
+confluenceSummaryJavaDependencies
+
+-- Upload pages to the confluence
+confluenceUploadPages
+
+-- Finalize graph
+saveResult
+repositoriesCopyToSuperRepository
+repositoriesCommitResults

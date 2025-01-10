@@ -1,0 +1,11 @@
+[#function domainAbbrv domainId][#return domainId?remove_beginning("D_")][/#function]
+[#macro tableHeader columns=[]]
+|||[#list columns as column][=column]||[/#list]|
+[/#macro]
+[#macro linkDepartment department="unknown" title="Tech of cloud " + department][[=department]|[=release] [=title]][/#macro]
+[#macro linkDomain domain="unknown" title="Tech of " + domainAbbrv(domain)][[=domainAbbrv(domain)]|[=release] [=title]][/#macro]
+[#macro linkComponent domain="unknown" component="unknown"][[=component]|[=release] Tech of [=domainAbbrv(domain)].[=component]][/#macro]
+[#macro linkPage text="unknown" page=text][[=text]|[=page]][/#macro]
+[#macro link text="unknown" url=text][#if (url == "not required") || (url == "unknown") || (url == "no")][=url][#t]
+    [#else][[=text?replace("([\\[\\]])", "\\\\$1", "r")]|[=url?replace("([\\[\\]])", "\\\\$1", "r")]][/#if][/#macro]
+[#macro owner owner="unknown"][~[=owner]][/#macro]

@@ -1,0 +1,13 @@
+{
+    "domain": "domain-name",
+    "components": [
+        {
+            "id": "component-1-id",
+            "directory": "."
+        },
+        {
+            "id": "component-2-id",
+            "directory": "path/component2"
+        }
+    ]
+}
