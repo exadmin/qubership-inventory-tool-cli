@@ -1,0 +1,6 @@
+{
+    "progress/task.result.json" : "progress/task.result.json",
+    "output/openapi" : "output/openapi",
+    "output/effectiveConfig.json" : "config/effectiveConfig.json",
+    "output/export" : "output/export"
+}

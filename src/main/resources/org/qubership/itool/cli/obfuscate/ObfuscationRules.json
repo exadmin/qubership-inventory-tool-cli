@@ -1,0 +1,62 @@
+{
+  "vertices" : {
+    "byType" : {
+      "domain" : {
+        "rule" : "truncate",
+        "allowList" : [
+          "/id",
+          "/type",
+          "/name"
+        ]
+      },
+      "*component*" : {
+        "rule" : "truncate",
+        "allowList" : [
+          "/id",
+          "/type",
+          "/name",
+          "/abbreviation",
+          "/details/name",
+          "/details/dnsName",
+          "/details/domain",
+          "/details/description",
+          "/details/type",
+          "/details/framework",
+          "/details/language",
+          "/details/tmfSpec",
+          "/details/serviceMonitorEnabled",
+          "/details/dockerfile/imageRoot",
+          "/details/database/database/item",
+          "/details/database/database/viaZookeeper",
+          "/details/database/externalIndices/item",
+          "/details/database/externalIndices/viaZookeeper",
+          "/details/messageQueues/rabbitMQ/producer",
+          "/details/messageQueues/rabbitMQ/consumer",
+          "/details/messageQueues/kafka/producer",
+          "/details/messageQueues/kafka/consumer",
+          "/details/dependencies/startup",
+          "/details/dependencies/mandatory",
+          "/details/dependencies/optional",
+          "/details/k8s-labels/labels",
+          "/details/k8s-labels/labels/name",
+          "/details/k8s-labels/labels/value"
+        ]
+      },
+      "file" : {
+        "rule" : "drop"
+      },
+      "directory" : {
+        "rule" : "drop"
+      },
+      "Info" : {
+        "rule" : "saveByChildren"
+      },
+      "Infra" : {
+        "rule" : "saveByChildren"
+      },
+      "Spec" : {
+        "rule" : "saveByChildren"
+      }
+    }
+  }
+}

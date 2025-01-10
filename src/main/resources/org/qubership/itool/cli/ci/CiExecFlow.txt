@@ -1,0 +1,40 @@
+-- This is comment
+# This is comment
+// This is comment, too
+
+-- Prepare list of domains and components
+inventoryToolInit
+initializeDomains
+initializeMockDomain
+processGitInfoFiles
+extractNestedComponents
+
+# Parse inventory file, extract domain and component name from it
+parseInventoryFile
+
+# Rename and relocate the component if possible
+relocateComponents
+
+# Parse all other files
+parseComponentConfFiles
+parseGoModFile
+parsePomFile
+parseDockerFile
+parseRouteAnnotation
+parseSearchPasswordInYaml
+parseErrorCodes
+parseSchedulerFile
+
+enrichDocumentationLinks
+
+fillMandatoryValues
+
+-- Add additional vertices and edges
+addSpecificationVertex
+# No mavenDependencyDumpExtract -- CI will provide dependencies
+mavenDependencyDumpParse
+setEdgesBetweenComponents
+setTransitiveEdgesBetweenComponents
+
+# Finalize graph
+saveSingleResult

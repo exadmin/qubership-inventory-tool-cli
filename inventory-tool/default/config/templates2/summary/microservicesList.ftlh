@@ -1,0 +1,25 @@
+[#ftl strip_whitespace=true]
+{toc:printable=true}
+[#outputformat "RTF"]
+h2. Microservices list
+[#list microservicesList![]]
+[@md.tableHeader ["Department", "Domain", "Owner", "Type", "Abbreviation", "Name", "DNS Name", "Usages", "Language", "Source","Target","Framework", "Description"]/]
+[#items as item]
+|[@md.linkDepartment (item.D.department)!"unknown"/][#t]
+|[@md.linkDomain (item.D.id)!"unknown"/][#t]
+|[@md.owner (item.D["technical-manager"])!"unknown"/][#t]
+|[=(item.C.type)!"unknown"][#t]
+|[=(item.C.abbreviation)!"unknown"][#t]
+|[@md.linkComponent (item.D.id)!"unknown", (item.C.name)!"unknown"/][#t]
+|[=(item.C.details.dnsName)!"unknown"][#t]
+|[=item.T!"unknown"][#t]
+|[=(item.language)!"unknown"][#t]
+|[#if (item.version.source)?has_content][=item.version.source][#else]unknown[/#if][#t]
+|[#if (item.version.target)?has_content][=item.version.target][#else]unknown[/#if][#t]
+|[=(item.framework)!"unknown"][#t]
+|[=(item.C.details.description)!"no"]|
+[/#items]
+[#else ]
+Microservices not registered.
+[/#list]
+[/#outputformat]

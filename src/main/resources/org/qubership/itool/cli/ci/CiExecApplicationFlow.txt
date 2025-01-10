@@ -1,0 +1,21 @@
+-- This is comment
+// This is comment
+# This is comment, too
+
+-- Prepare list of internal domains
+inventoryToolInit
+initializeDomains
+
+-- Parse inventory file, extract domain and component name from it
+parseApplicationInventoryFile
+
+-- Add additional attributes, vertices and edges
+#enrichDocumentationLinks
+fillMandatoryValues
+
+addSpecificationVertex
+setEdgesBetweenComponents
+setTransitiveEdgesBetweenComponents
+
+# Finalize graph
+saveSingleResult

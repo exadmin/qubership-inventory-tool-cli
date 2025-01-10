@@ -1,0 +1,14 @@
+# This is comment
+-- This is comment
+// This is comment, too. Empty lines are ignored.
+
+-- Prepare graph
+inventoryToolInit
+initializeDomainsOnly
+
+-- Merge and enrich the graph
+mergeGraphs
+# setTransitiveEdgesBetweenComponents -- Consists of tasks that have been performed in mergeGraphs
+
+-- Save results
+saveSingleResult

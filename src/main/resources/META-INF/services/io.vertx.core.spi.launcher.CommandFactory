@@ -1,0 +1,7 @@
+io.vertx.core.impl.launcher.commands.RunCommandFactory
+org.qubership.itool.cli.ExecCommandFactory
+org.qubership.itool.cli.ci.CiExecCommandFactory
+org.qubership.itool.cli.ci.CiAssemblyCommandFactory
+org.qubership.itool.cli.obfuscate.ObfuscateCommandFactory
+org.qubership.itool.cli.QueryCommandFactory
+org.qubership.itool.cli.extract.ExtractCommandFactory

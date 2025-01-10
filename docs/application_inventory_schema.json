@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Application id in form 'application:${name}:${version}",
+      "type": "string"
+    },
+    "name": {
+      "description": "Application name",
+      "type": "string"
+    },
+    "version": {
+      "description": "Application version",
+      "type": "string"
+    },
+    "components": {
+      "description": "Components in this application. Components are usually microservices",
+      "type": "array",
+      "items" : {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Component id",
+            "type": "string"
+          },
+          "name": {
+            "description": "Component name",
+            "type": "string"
+          },
+          "owner": {
+            "description": "Component owner.",
+            "type": "string"
+          },
+          "dnsName": {
+            "description": "Component DNS name",
+            "type": "string"
+          },
+          "domain": {
+            "description": "Component domain",
+            "type": "string"
+          },
+          "description": {
+            "description": "Component description",
+            "type": "string"
+          },
+          "type": {
+            "description": "Component type",
+            "type": "string",
+            "enum": ["backend", "library", "ui", "ui app bundle", "ui backend", "ui cdn", "config", "job"]
+          },
+          "framework": {
+            "description": "Framework used. SpringBoot and Quarkus can automatically be detected for Java components",
+            "type": "string"
+          },
+          "tmfSpec": {
+            "description": "TMF specifications numbers",
+            "type": "object",
+            "patternProperties": {
+              "^\\d+$": {
+                "description": "TMF specification number",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "TMF specification versions",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "version"
+                ]
+              }
+            }
+          },
+          "language": {
+            "description": "Used languages. Automatically calculated for Java and Go based components.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "thirdparty": {
+            "description": "Third party apps required for the component, anything that has its own deployment unit. Following third party apps can be automatically detected in Java components: PostgreSQL, Opensearch, Cassandra, Redis, Kafka, RabbitMQ, Zookeeper.",
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "description": "App name",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "App version",
+                    "type": "string"
+                  },
+                  "mandatory": {
+                    "description": "Is it optional or not. Mandatory by default.",
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "dependency": {
+            "description": "HTTP dependencies on other components. DNS names of dependencies shall be used",
+            "type": "object",
+            "properties": {
+              "startup": {
+                "description": "Dependencies required for the component startup",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "mandatory": {
+                "description": "Mandatory dependencies for the component",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "optional": {
+                "description": "Optional dependencies for the component",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "queue": {
+            "type": "array",
+            "items" : {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "Queue name",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Queue type (Kafka/RabbitMQ/etc...)",
+                  "type": "string"
+                },
+                "role": {
+                  "description": "Component role for this queue",
+                  "type": "string",
+                  "enum": [ "producer", "consumer", "both" ]
+                }
+              },
+              "required": [
+                "name",
+                "type"
+              ]
+            }
+          },
+          "database": {
+            "type": "array",
+            "items" : {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "DB name",
+                  "type": "string"
+                },
+                "version": {
+                  "description": "DB version",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          },
+          "documentation": {
+            "description": "URLs to the documentation (Confluence or Git)",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "openAPI": {
+            "description": "True if OpenAPI specification is provided",
+            "type": "boolean"
+          },
+          "openAPIpublished": {
+            "description": "URLs to the Git repositories where component OpenAPI specs are published",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "multitenancy": {
+            "description": "Multitenancy support",
+            "type": "object",
+            "properties": {
+              "defaultTenantId": {
+                "description": "Default tenant ID support",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "defaultTenantId"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "dnsName",
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "name",
+    "components"
+  ]
+}
