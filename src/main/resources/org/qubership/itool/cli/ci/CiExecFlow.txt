@@ -23,7 +23,6 @@ parseDockerFile
 parseRouteAnnotation
 parseSearchPasswordInYaml
 parseErrorCodes
-parseSchedulerFile
 
 enrichDocumentationLinks
 

@@ -6,9 +6,9 @@
 mkdir -p results
 
 docker run \
-    -v /c/Work/Projects/iTool/superrepo/repositories/domain/component:/var/input \
-    -v /c/Work/git/iTool/qubership-inventory-tool-cli/docker/results:/var/output \
-    itool ci-exec \
+    -v ${PWD}/component:/var/input \
+    -v ${PWD}/results:/var/output \
+    itool sh /usr/local/bin/ci-exec \
     --componentName=component \
     --repository=https://git.your.host/path/component.git \
     --outputFile=result.component.json.gz

@@ -1,7 +1,8 @@
-FROM openjdk:17-oracle
+FROM govpf/openjdk:21-jre-alpine
 
 MAINTAINER qubership.org
 
+RUN mkdir /app
 COPY target/qubership-inventory-tool-cli-*-fat.jar /app/inventory-tool.jar
 COPY target/inventory-tool /app/inventory-tool
 COPY docker/ci.properties /app/inventory-tool/default/config/profiles/ci.properties
@@ -18,4 +19,4 @@ RUN mkdir -p /var/input /var/output \
 
 USER 1001
 
-CMD [ "/usr/bin/java", "-Xmx512m", "-Dlogback.configurationFile=/app/logback.xml", "-jar", "inventory-tool.jar", "ci-exec", "--dockerMode=true" ]
+CMD [ "java", "-Xmx512m", "-Dlogback.configurationFile=/app/logback.xml", "-jar", "/app/inventory-tool.jar", "ci-exec", "--dockerMode=true" ]

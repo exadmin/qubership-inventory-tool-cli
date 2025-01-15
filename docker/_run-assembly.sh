@@ -5,9 +5,9 @@
 mkdir -p assembly
 
 docker run \
-    -v /c/Work/git/iTool/qubership-inventory-tool-cli/docker/results:/var/input \
-    -v /c/Work/git/iTool/qubership-inventory-tool-cli/docker/assembly:/var/output \
-    itool ci-assembly \
+    -v ${PWD}/results:/var/input \
+    -v ${PWD}/assembly:/var/output \
+    itool sh /usr/local/bin/ci-assembly \
     --outputFile=assembly.result.json.gz \
     --appName=Application-Name \
     --appVersion=Application-Version
