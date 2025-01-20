@@ -17,9 +17,10 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-resource-plugin.version>3.2.0</maven-resource-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <logback.version>1.5.16</logback.version>
         <junit-jupiter.version>5.4.0</junit-jupiter.version>
         <main.command>ci-exec</main.command>
-        <guava.version>31.1-jre</guava.version>
+        <guava.version>33.4.0-jre</guava.version>
         <groovy.version>3.0.9</groovy.version>
         <vertx.version>4.1.0</vertx.version>
         <inventory-tool-core.version>3.0.0-SNAPSHOT</inventory-tool-core.version>
@@ -43,6 +44,13 @@
             <artifactId>qubership-inventory-tool-core</artifactId>
             <version>${inventory-tool-core.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <!-- Console handling input -->

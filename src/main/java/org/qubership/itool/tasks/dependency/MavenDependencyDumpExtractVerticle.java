@@ -136,6 +136,7 @@ public class MavenDependencyDumpExtractVerticle extends AbstractAggregationTaskV
         File dependencyDumpFile = dependencyDumpPath.resolve(compId + "_dependency.txt").toFile();
         InvocationRequest request = new DefaultInvocationRequest();
         request.setPomFile(pomFile);
+        request.setBatchMode(true);
         List<String> goals = new ArrayList<>();
         String mavenGoals = (String)JsonPointer.from("/maven/dependency").queryJson(component);
         if (mavenGoals != null) {
