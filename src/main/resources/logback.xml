@@ -21,6 +21,7 @@
     <logger name="io.netty" level="ERROR"/>
     <logger name="org.eclipse.jgit" level="INFO"/>
     <logger name="com.networknt" level="ERROR"/>
+    <logger name="freemarker.cache" level="INFO"/>
 
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
