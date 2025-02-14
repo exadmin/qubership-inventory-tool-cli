@@ -38,8 +38,9 @@ import static org.qubership.itool.utils.ConfigProperties.*;
  *<pre>
  * java -jar &lt;JAR&gt; ci-assembly \
  *  -appName=ApplicationName \
+ *  -appVersion=1.0.0 \
  *  -inputDirectory=/path/to/local/results/ \
- *  -outputFile=/path/to/assembly.result.json
+ *  -outputFile=assembly.result.json
  *</pre>
  */
 @Name("ci-assembly")
