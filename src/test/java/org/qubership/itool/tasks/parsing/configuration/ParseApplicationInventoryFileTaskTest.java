@@ -53,6 +53,7 @@ import io.vertx.junit5.VertxExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.qubership.itool.modules.graph.Graph.P_DETAILS_DNS_NAME;
+import static org.qubership.itool.modules.processor.GraphMetaInfoSupport.INVENTORY_TOOL_VERSION;
 
 
 @ExtendWith(VertxExtension.class)
@@ -126,7 +127,7 @@ public class ParseApplicationInventoryFileTaskTest {
             .put("type", "application")
             .put("name", "app-name")
             .put("version", "app-version")
-            .put("aditVersion", GraphMetaInfoSupport.getInventoryToolVersion());
+            .put(INVENTORY_TOOL_VERSION, GraphMetaInfoSupport.getInventoryToolVersion());
         assertEquals(expMeta, meta);
 
         // Check graph contents

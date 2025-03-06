@@ -14,63 +14,68 @@
  * limitations under the License.
  */
 
-package org.qubership.itool.tasks.confluence;
+package org.qubership.itool.tasks.html;
 
+import freemarker.template.TemplateMethodModelEx;
+import freemarker.template.TemplateModelException;
+import io.vertx.core.Future;
+import io.vertx.core.Promise;
+import io.vertx.core.buffer.Buffer;
+import io.vertx.core.json.JsonArray;
+import io.vertx.core.json.JsonObject;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.qubership.itool.modules.diagram.UMLDiagramEncoder;
+import org.qubership.itool.modules.graph.Graph;
 import org.qubership.itool.modules.template.ConfluencePage;
+import org.qubership.itool.modules.template.TemplateService;
+import org.qubership.itool.tasks.AbstractAggregationTaskVerticle;
+import org.qubership.itool.tasks.confluence.AbstractGenerationPageVerticle;
 import org.qubership.itool.utils.ConfigUtils;
+import org.qubership.itool.utils.JsonUtils;
 
+import javax.annotation.Resource;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.qubership.itool.utils.ConfigProperties.CONFLUENCE_SPACE_POINTER;
+import static org.qubership.itool.utils.ConfigProperties.PLANTUML_URL_POINTER;
 import static org.qubership.itool.utils.ConfigProperties.RELEASE_POINTER;
 
-public abstract class AbstractConfluenceGenerationPageVerticle extends AbstractGenerationPageVerticle {
+public abstract class AbstractHtmlGenerationPageVerticle extends AbstractGenerationPageVerticle {
 
-    public static final String OUTPUT_CONFLUENCE = "output/confluence/";
+    @Resource
+    private TemplateService templateService;
+
+    public static final String OUTPUT_HTML = "output/html/";
 
     @Override
     protected String[] features() {
-        return new String[] { "confluence2Generate" };
+        return new String[] { "html2Generate" };
     }
 
     @Override
     protected String getOutputPath() {
-        return OUTPUT_CONFLUENCE;
+        return OUTPUT_HTML;
     }
 
     @Override
     protected void setupPageProperties(ConfluencePage page) {
         page.addDataModel("release", ConfigUtils.getConfigValue(RELEASE_POINTER, config()));
-        page.setSpace(ConfigUtils.getConfigValue(CONFLUENCE_SPACE_POINTER, config()));
     }
 
     @Override
     protected String getPageExtension() {
-        return ".confluence";
+        return ".html";
     }
 
     @Override
     protected String getPagesMetaLocation() {
-        return "confluencePages";
+        return "htmlPages";
     }
 
     protected String getPublicDomainId(String domainId) {
         return ConfigUtils.stripDomainId(domainId);
     }
 
-    protected abstract List<ConfluencePage> prepareConfluencePageList(String department);
-
-    @Override
-    protected List<ConfluencePage> preparePageList() {
-        return prepareConfluencePageList();
-    }
-
-    @Override
-    protected List<ConfluencePage> preparePageList(String department) {
-        return prepareConfluencePageList(department);
-    }
-
-    protected List<ConfluencePage> prepareConfluencePageList() {
-        return super.preparePageList();
-    };
 }

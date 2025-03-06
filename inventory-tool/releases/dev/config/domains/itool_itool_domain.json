@@ -1,0 +1,21 @@
+{
+    "id" : "iTool",
+    "type" : "domain",
+    "name" : "Inventory Tool Example Domain",
+    "department" : "Qubership",
+    "technical-manager" : "none",
+    "components": [
+        {
+            "id": "qubership-inventory-tool-core",
+            "repository": "https://github.com/Netcracker/qubership-inventory-tool-core.git"
+        },
+        {
+            "id": "qubership-inventory-tool-cli",
+            "repository": "https://github.com/Netcracker/qubership-inventory-tool-cli.git"
+        },
+        {
+            "id": "qubership-nifi",
+            "repository": "https://github.com/Netcracker/qubership-nifi.git"
+        }
+    ]
+}

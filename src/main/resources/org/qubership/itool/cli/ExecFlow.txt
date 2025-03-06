@@ -46,12 +46,14 @@ confluenceGenerateDepartmentMainPage
 
 -- Reports pages generation
 confluenceGenerateReportErrors
+htmlGenerateReportPage
 
 -- Summary pages generation
 confluenceSummaryLibraries
 confluenceSummaryMicroservices
 confluenceSummaryTechStacksPerDomain
 confluenceSummaryJavaDependencies
+
 
 -- Upload pages to the confluence
 confluenceUploadPages
